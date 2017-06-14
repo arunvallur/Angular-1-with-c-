@@ -1,0 +1,76 @@
+﻿@{
+    ViewBag.Title = " Login";
+
+}
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+@*<script src="~/Scripts/jquery-1.9.1.min.js"></script>*@
+<script src="~/Scripts/angular.min.js"></script>
+<script src="~/AppScript/adminscript.js"></script>
+<script src="~/AppScript/AppCall.js"></script>
+<script src="~/Scripts/angular-route.min.js"></script>
+<script src="~/Content/Loginform/js/scripts.js"></script>
+<script src="~/Content/Loginform/js/jquery.backstretch.min.js"></script>
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+<link href="~/Content/Login/main.css" rel="stylesheet" />
+<style>
+    .form-control {
+        display: inline;
+    }
+</style>
+<div class="container">
+    <div class="row">
+
+
+        <div ng-app="AngluarApp" ng-controller="UserLogin">
+
+            <form name="formUserlogin">
+
+
+
+                <div class="col-md-6 col-md-offset-3 boxed extra-padding">
+
+                    <h1 class="text-center">Login</h1>
+
+                    <ul class="list-unstyled">
+                        <li>
+                            <div class="form-group">
+                                <label class="control-label">Username</label>
+                                <input type="text" name="name" class="form-control" placeholder="Username *" data-ng-model="User.first_name" required />
+                            </div>
+                        </li>
+                        <li>
+                            <div class="form-group">
+                                <label class="control-label">Password</label>
+                                <input class="form-control" name="pwd" type="password" placeholder="Password *" data-ng-model="User.Password" required />
+                            </div>
+                        </li>
+                        <li>
+                            <button id="btnSignIn" class="btn btn-success" ng-disabled="formUserlogin.$invalid" data-ng-click="LoginUser(User)">Sign In</button>
+                            &nbsp;&nbsp;&nbsp; Forgot your <a href="~/EduSource/ForgotPassword">password</a>
+                        </li>
+
+                        <li></li>
+                    </ul>
+                    <div id="divMessage" role="alert">
+                        <p>
+                            <i id="inlineMessage"></i>
+                            {{message}}
+                        </p>
+                    </div>
+
+                </div>
+
+
+
+            </form>
+
+
+        </div>
+
+    </div>
+</div>
+
+
+
+

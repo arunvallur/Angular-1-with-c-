@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EBCDBModelStoreContainer" CdmEntityContainer="EBCDBEntities">
+    <EntitySetMapping Name="booking_history">
+      <EntityTypeMapping TypeName="EBCDBModel.booking_history">
+        <MappingFragment StoreEntitySet="booking_history">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="booking_id" ColumnName="booking_id" />
+          <ScalarProperty Name="booking_start_date" ColumnName="booking_start_date" />
+          <ScalarProperty Name="booking_end_date" ColumnName="booking_end_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="courts">
+      <EntityTypeMapping TypeName="EBCDBModel.court">
+        <MappingFragment StoreEntitySet="courts">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="court_number" ColumnName="court_number" />
+          <ScalarProperty Name="location" ColumnName="location" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="slots">
+      <EntityTypeMapping TypeName="EBCDBModel.slot">
+        <MappingFragment StoreEntitySet="slots">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="start_time" ColumnName="start_time" />
+          <ScalarProperty Name="end_time" ColumnName="end_time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblregisters">
+      <EntityTypeMapping TypeName="EBCDBModel.tblregister">
+        <MappingFragment StoreEntitySet="tblregister">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="EBCDBModel.user">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+          <ScalarProperty Name="email_id" ColumnName="email_id" />
+          <ScalarProperty Name="phone_no" ColumnName="phone_no" />
+          <ScalarProperty Name="role_id" ColumnName="role_id" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bookings">
+      <EntityTypeMapping TypeName="EBCDBModel.booking">
+        <MappingFragment StoreEntitySet="booking">
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+          <ScalarProperty Name="booking_price" ColumnName="booking_price" />
+          <ScalarProperty Name="booking_status" ColumnName="booking_status" />
+          <ScalarProperty Name="booking_date" ColumnName="booking_date" />
+          <ScalarProperty Name="slot_id" ColumnName="slot_id" />
+          <ScalarProperty Name="cour_id" ColumnName="cour_id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Prices">
+      <EntityTypeMapping TypeName="EBCDBModel.Price">
+        <MappingFragment StoreEntitySet="Price">
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="TaxPercent" ColumnName="TaxPercent" />
+          <ScalarProperty Name="C1D" ColumnName="1D" />
+          <ScalarProperty Name="C6M" ColumnName="6M" />
+          <ScalarProperty Name="C3M" ColumnName="3M" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

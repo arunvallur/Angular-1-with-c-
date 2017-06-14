@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EBC @ViewBag.Title</title>
+
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    @*<script src="~/Scripts/jquery-1.10.2.min.js"></script>*@
+    <script src="~/Scripts/jquery-1.9.1.min.js"></script>
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    @*<script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>*@
+    <link href="~/Content/Home/simple-sidebar.css" rel="stylesheet" />
+    @*<script src="~/Scripts/angular.min.js"></script>*@
+    @*<script src="~/Scripts/ng-table.min.js"></script>*@
+    <script src="~/Scripts/angular-bootstrap/ui-bootstrap.js"></script>
+    <script src="~/Scripts/ng-table.js"></script>
+    <script src="~/Scripts/angular-route.min.js"></script> 
+    @*<script src="~/Scripts/ngDialog-master/js/ngDialog.min.js"></script>
+    <script src="~/Scripts/bower-angular-messages-master/angular-messages.min.js"></script>*@
+    
+   
+    <script src="~/Scripts/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script src="~/Scripts/angular-prompt.js"></script>
+    <script src="~/Scripts/angular-animate.js"></script>
+    <script src="~/Scripts/angular-sanitize.min.js"></script>
+    <script src="~/Scripts/ngDialog.min.js"></script>   
+    <script src="~/Scripts/angular-messages.min.js"></script>
+  
+    <script src="~/AppScript/adminscript.js"></script>
+    <script src="~/AppScript/AppCall.js"></script>
+    <script src="~/AppScript/AppRouting.js"></script>
+    @*<script src="~/AppScript/AppRouting.js"></script>*@
+    <script src="~/Scripts/angular-sanitize.js"></script>
+    <script src="~/Scripts/tinymce/tinymce.js"></script>
+    <script src="~/AppScript/Shareddata.js"></script>
+    @*new css slide*@
+  
+    @*<link href="~/Content/Slide-Push-Menus-master/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/Slide-Push-Menus-master/css/style.min.css" rel="stylesheet" />
+    <script src="~/Content/Slide-Push-Menus-master/js/dist/menu.min.js"></script>
+    <script src="~/Content/Slide-Push-Menus-master/js/dist/menu.js"></script>*@
+</head>
+<body>
+    <div>
+        @RenderBody()
+       
+    </div>
+</body>
+</html>
+
+    <script>
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+        $(".pagebody").click(function (e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+    </script>

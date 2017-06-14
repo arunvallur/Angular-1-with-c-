@@ -1,0 +1,163 @@
+﻿@{
+  //  ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div ng-app="AngluarApp" ng-controller="Home">
+
+    @*old one---------*@
+
+
+    <div>
+        <div>
+            <nav class="navbar navbar-default navbar-fixed-top" style="background-color:whitesmoke; min-height: 70px">
+                <div style="margin-left: 30px; margin-top: 20px;">
+                    @*<button type="button" style="height: 30px; width: 45px;" data-toggle="collapse" id="menu-toggle" data-target="#menu">*@
+                        <span class="glyphicon glyphicon-align-justify" data-toggle="collapse" id="menu-toggle" data-target="#menu"></span>
+                        @*<span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>*@
+                </div>
+            </nav>
+        </div>
+        
+
+        <div>
+            <div id="wrapper">
+
+                <div id="sidebar-wrapper" style="top:70px">
+                    @*@if (User.IsInRole("Admin"))
+                    {*@ 
+                         <ul class="sidebar-nav">
+                        <li class="sidebar-brand">
+                        </li>
+                        <li>
+                            <a href="#BookingHistory">Booking History</a>
+                        </li>
+                        <li>
+                            <a href="#Member">Member</a>
+                        </li>
+                        <li>
+                            <a href="#Oneday">One Day User Booking</a>
+                        </li>
+                        <li>
+                            <a href="#Price">Price</a>
+                        </li>
+                        <li id="Logut">@Html.ActionLink("Logout", "Login", "EBC", null, new { @class = "arrow" })</li>
+                        @*<a href="#" ng-click="$event.preventDefault();Logout()">Logout</a>*@
+
+                    </ul>
+                   @* }*@
+                    @*else
+                    {
+                        <ul class="sidebar-nav">
+                            <li class="sidebar-brand">
+                            </li>
+                            
+                            <li>
+                                <a href="#Member">Member</a>
+                            </li>
+                            <li>
+                                <a href="#Oneday">One Day User Booking</a>
+                            </li>
+                            <li>
+                                <a href="#Price">Price</a>
+                            </li>
+                            <li id="Logut">@Html.ActionLink("Logout", "Login", "EBC", null, new { @class = "arrow" })</li>
+                            @*<a href="#" ng-click="$event.preventDefault();Logout()">Logout</a>*@
+
+                        
+                    
+                  
+                </div>
+
+                <div>
+                    <div ng-view=""></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+    @*end*@
+
+
+
+
+    @*new one*@
+
+
+    @*<div id="o-wrapper" class="o-wrapper">
+            <header class="o-header">
+                <nav class="o-header-nav">
+                    <a href="http://callmenick.com/_development/image-caption-reveal-on-hover/" class="o-header-nav__link"><i class="fa fa-arrow-left"></i> Previous Demo</a>
+                    <a href="http://callmenick.com/post/slide-and-push-menus-with-css3-transitions" class="o-header-nav__link">Back To Article <i class="fa fa-star"></i></a>
+                </nav>
+                <div class="o-container">
+                    <h1 class="o-header__title">Slide and Push Menus with CSS</h1>
+                </div>
+            </header><!-- /o-header -->
+            <main class="o-content">
+                <div class="o-container">
+
+                    <div class="c-buttons">
+
+                        <button id="c-button--push-left" class="c-button">Push Left</button>
+
+                    </div>
+
+                    <div id="github-icons"></div>
+                </div><!-- /o-container -->
+            </main><!-- /o-content -->
+            <footer class="o-footer">
+                <div class="o-container">
+                    <small>&copy; 2015, callmenick.com</small>
+                </div>
+            </footer><!-- /o-footer -->
+        </div>*@<!-- /o-wrapper -->
+    @*<nav id="c-menu--push-left" class="c-menu c-menu--push-left">
+            <button class="c-menu__close">&larr; Close Menu</button>
+            <ul class="c-menu__items">
+                <li class="c-menu__item"><a href="#" class="c-menu__link">Home</a></li>
+                <li class="c-menu__item"><a href="#" class="c-menu__link">About</a></li>
+                <li class="c-menu__item"><a href="#" class="c-menu__link">Services</a></li>
+                <li class="c-menu__item"><a href="#" class="c-menu__link">Work</a></li>
+                <li class="c-menu__item"><a href="#" class="c-menu__link">Contact</a></li>
+            </ul>
+        </nav>*@<!-- /c-menu push-left -->
+    @*<div id="c-mask" class="c-mask"></div>*@<!-- /c-mask -->
+    @*end-------*@
+
+</div>
+
+
+
+
+
+@*<script>
+      /**
+         * Push left instantiation and action.
+         */
+        var pushLeft = new Menu({
+            wrapper: '#o-wrapper',
+            type: 'push-left',
+            menuOpenerClass: '.c-button',
+            maskId: '#c-mask'
+        });
+
+        var pushLeftBtn = document.querySelector('#c-button--push-left');
+
+        pushLeftBtn.addEventListener('click', function (e) {
+            e.preventDefault;
+            pushLeft.open();
+        });
+
+    </script>*@

@@ -1,0 +1,910 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="EBCAdminModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="accessory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tshirt" Type="bit" />
+          <Property Name="racket" Type="bit" />
+          <Property Name="UserId" Type="int" />
+        </EntityType>
+        <EntityType Name="Asset_bill_tbl">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AssetName" Type="varchar" MaxLength="100" />
+          <Property Name="AssetImage" Type="varchar" MaxLength="120" />
+          <Property Name="Remarks" Type="varchar" MaxLength="500" />
+          <Property Name="AssetAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="AssetDate" Type="date" />
+        </EntityType>
+        <EntityType Name="booking">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="bigint" Nullable="false" />
+          <Property Name="cour_id" Type="bigint" Nullable="false" />
+          <Property Name="slot_id" Type="bigint" Nullable="false" />
+          <Property Name="booking_date" Type="datetime" Nullable="false" />
+          <Property Name="booking_status" Type="varchar" MaxLength="50" />
+          <Property Name="booking_price" Type="decimal" Precision="10" Scale="6" Nullable="false" />
+          <Property Name="Booking_expdate" Type="datetime" Nullable="false" />
+          <Property Name="BookingNumber" Type="varchar" MaxLength="10" />
+          <Property Name="Member_id" Type="int" />
+        </EntityType>
+        <EntityType Name="booking_history">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" />
+          <Property Name="booking_id" Type="bigint" Nullable="false" />
+          <Property Name="booking_start_date" Type="datetime" Nullable="false" />
+          <Property Name="booking_end_date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="courts">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" />
+          <Property Name="court_number" Type="bigint" Nullable="false" />
+          <Property Name="location" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="DBUpdates">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Details" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Members">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="member_type" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="120" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="100" />
+          <Property Name="mobile" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="expiry_date" Type="date" />
+          <Property Name="reg_Date" Type="date" />
+          <Property Name="Address" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="MEstatus" Type="varchar" MaxLength="12" />
+          <Property Name="Slot" Type="int" />
+          <Property Name="Court" Type="int" />
+          <Property Name="MemberNumber" Type="varchar" MaxLength="10" />
+          <Property Name="AcctActivate" Type="int" />
+        </EntityType>
+        <EntityType Name="members_type">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Member_Type_Name" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="NUT_Updates">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="News" Type="varchar(max)" />
+          <Property Name="Updates" Type="varchar(max)" />
+          <Property Name="Tournaments" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="pricelst">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="mem3m" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="mem6m" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="singlem" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="tax" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="adultcoaching" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="childcoaching" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Roles" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="slots">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="start_time" Type="time" Precision="7" Nullable="false" />
+          <Property Name="end_time" Type="time" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tblregister">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="120" />
+          <Property Name="Email" Type="varchar" MaxLength="120" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="10" />
+          <Property Name="Address" Type="varchar" MaxLength="250" />
+          <Property Name="Password" Type="varchar" MaxLength="150" />
+          <Property Name="UserType" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="first_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="last_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="email_id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="phone_no" Type="bigint" />
+          <Property Name="role_id" Type="bigint" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="status" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Wallet">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BookedDate" Type="datetime" />
+          <Property Name="CreditTotal" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="CreditUsed" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="BookingID" Type="bigint" Nullable="false" />
+          <Property Name="MemberID" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_booking_courts">
+          <End Role="courts" Type="Self.courts" Multiplicity="1" />
+          <End Role="booking" Type="Self.booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="courts">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="booking">
+              <PropertyRef Name="cour_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_booking_members">
+          <End Role="Members" Type="Self.Members" Multiplicity="1" />
+          <End Role="booking" Type="Self.booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Members">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="booking">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_booking_slots">
+          <End Role="slots" Type="Self.slots" Multiplicity="1" />
+          <End Role="booking" Type="Self.booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="slots">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="booking">
+              <PropertyRef Name="slot_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Members_members_type">
+          <End Role="members_type" Type="Self.members_type" Multiplicity="1" />
+          <End Role="Members" Type="Self.Members" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="members_type">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Members">
+              <PropertyRef Name="member_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_members_type_members_type">
+          <End Role="members_type" Type="Self.members_type" Multiplicity="1" />
+          <End Role="members_type1" Type="Self.members_type" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="members_type">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="members_type1">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Wallet_Booking">
+          <End Role="booking" Type="Self.booking" Multiplicity="1" />
+          <End Role="Wallet" Type="Self.Wallet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="booking">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Wallet">
+              <PropertyRef Name="BookingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Wallet_Wallet">
+          <End Role="Wallet" Type="Self.Wallet" Multiplicity="1" />
+          <End Role="Wallet1" Type="Self.Wallet" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Wallet">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Wallet1">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="BookingNumber" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="char">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="MemberNumber" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="char">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="EBCAdminModelStoreContainer">
+          <EntitySet Name="accessory" EntityType="Self.accessory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Asset_bill_tbl" EntityType="Self.Asset_bill_tbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="booking" EntityType="Self.booking" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="booking_history" EntityType="Self.booking_history" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="courts" EntityType="Self.courts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DBUpdates" EntityType="Self.DBUpdates" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Members" EntityType="Self.Members" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="members_type" EntityType="Self.members_type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NUT_Updates" EntityType="Self.NUT_Updates" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="pricelst" EntityType="Self.pricelst" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="slots" EntityType="Self.slots" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblregister" EntityType="Self.tblregister" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Wallet" EntityType="Self.Wallet" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_booking_courts" Association="Self.FK_booking_courts">
+            <End Role="courts" EntitySet="courts" />
+            <End Role="booking" EntitySet="booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_booking_members" Association="Self.FK_booking_members">
+            <End Role="Members" EntitySet="Members" />
+            <End Role="booking" EntitySet="booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_booking_slots" Association="Self.FK_booking_slots">
+            <End Role="slots" EntitySet="slots" />
+            <End Role="booking" EntitySet="booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Members_members_type" Association="Self.FK_Members_members_type">
+            <End Role="members_type" EntitySet="members_type" />
+            <End Role="Members" EntitySet="Members" />
+          </AssociationSet>
+          <AssociationSet Name="FK_members_type_members_type" Association="Self.FK_members_type_members_type">
+            <End Role="members_type" EntitySet="members_type" />
+            <End Role="members_type1" EntitySet="members_type" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Wallet_Booking" Association="Self.FK_Wallet_Booking">
+            <End Role="booking" EntitySet="booking" />
+            <End Role="Wallet" EntitySet="Wallet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Wallet_Wallet" Association="Self.FK_Wallet_Wallet">
+            <End Role="Wallet" EntitySet="Wallet" />
+            <End Role="Wallet1" EntitySet="Wallet" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EBCAdminModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="accessory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tshirt" Type="Boolean" />
+          <Property Name="racket" Type="Boolean" />
+          <Property Name="UserId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Asset_bill_tbl">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AssetName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="AssetImage" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="AssetAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="AssetDate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="booking">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="Int64" Nullable="false" />
+          <Property Name="cour_id" Type="Int64" Nullable="false" />
+          <Property Name="slot_id" Type="Int64" Nullable="false" />
+          <Property Name="booking_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="booking_status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="booking_price" Type="Decimal" Precision="10" Scale="6" Nullable="false" />
+          <Property Name="Booking_expdate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="BookingNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Member_id" Type="Int32" />
+          <NavigationProperty Name="court" Relationship="Self.FK_booking_courts" FromRole="booking" ToRole="courts" />
+          <NavigationProperty Name="Member" Relationship="Self.FK_booking_members" FromRole="booking" ToRole="Members" />
+          <NavigationProperty Name="slot" Relationship="Self.FK_booking_slots" FromRole="booking" ToRole="slots" />
+          <NavigationProperty Name="Wallets" Relationship="Self.FK_Wallet_Booking" FromRole="booking" ToRole="Wallet" />
+        </EntityType>
+        <EntityType Name="booking_history">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" />
+          <Property Name="booking_id" Type="Int64" Nullable="false" />
+          <Property Name="booking_start_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="booking_end_date" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="court">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" />
+          <Property Name="court_number" Type="Int64" Nullable="false" />
+          <Property Name="location" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="bookings" Relationship="Self.FK_booking_courts" FromRole="courts" ToRole="booking" />
+        </EntityType>
+        <EntityType Name="DBUpdate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Details" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Member">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="member_type" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="mobile" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="expiry_date" Type="DateTime" Precision="0" />
+          <Property Name="reg_Date" Type="DateTime" Precision="0" />
+          <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="MEstatus" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Slot" Type="Int32" />
+          <Property Name="Court" Type="Int32" />
+          <Property Name="MemberNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="AcctActivate" Type="Int32" />
+          <NavigationProperty Name="bookings" Relationship="Self.FK_booking_members" FromRole="Members" ToRole="booking" />
+          <NavigationProperty Name="members_type" Relationship="Self.FK_Members_members_type" FromRole="Members" ToRole="members_type" />
+        </EntityType>
+        <EntityType Name="members_type">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Member_Type_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Members" Relationship="Self.FK_Members_members_type" FromRole="members_type" ToRole="Members" />
+          <NavigationProperty Name="members_type1" Relationship="Self.FK_members_type_members_type" FromRole="members_type" ToRole="members_type1" />
+          <NavigationProperty Name="members_type2" Relationship="Self.FK_members_type_members_type" FromRole="members_type1" ToRole="members_type" />
+        </EntityType>
+        <EntityType Name="NUT_Updates">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="News" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Updates" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Tournaments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="pricelst">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="mem3m" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="mem6m" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="singlem" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="tax" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="adultcoaching" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="childcoaching" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Roles" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="slot">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="start_time" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="end_time" Type="Time" Nullable="false" Precision="7" />
+          <NavigationProperty Name="bookings" Relationship="Self.FK_booking_slots" FromRole="slots" ToRole="booking" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblregister">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="UserType" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="first_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="phone_no" Type="Int64" />
+          <Property Name="role_id" Type="Int64" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="status" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Wallet">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BookedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreditTotal" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="CreditUsed" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="BookingID" Type="Int64" Nullable="false" />
+          <Property Name="MemberID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="booking" Relationship="Self.FK_Wallet_Booking" FromRole="Wallet" ToRole="booking" />
+          <NavigationProperty Name="Wallet1" Relationship="Self.FK_Wallet_Wallet" FromRole="Wallet" ToRole="Wallet1" />
+          <NavigationProperty Name="Wallet2" Relationship="Self.FK_Wallet_Wallet" FromRole="Wallet1" ToRole="Wallet" />
+        </EntityType>
+        <Association Name="FK_booking_courts">
+          <End Role="courts" Type="Self.court" Multiplicity="1" />
+          <End Role="booking" Type="Self.booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="courts">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="booking">
+              <PropertyRef Name="cour_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_booking_members">
+          <End Role="Members" Type="Self.Member" Multiplicity="1" />
+          <End Role="booking" Type="Self.booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Members">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="booking">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_booking_slots">
+          <End Role="slots" Type="Self.slot" Multiplicity="1" />
+          <End Role="booking" Type="Self.booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="slots">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="booking">
+              <PropertyRef Name="slot_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Wallet_Booking">
+          <End Role="booking" Type="Self.booking" Multiplicity="1" />
+          <End Role="Wallet" Type="Self.Wallet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="booking">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Wallet">
+              <PropertyRef Name="BookingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Members_members_type">
+          <End Role="members_type" Type="Self.members_type" Multiplicity="1" />
+          <End Role="Members" Type="Self.Member" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="members_type">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Members">
+              <PropertyRef Name="member_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_members_type_members_type">
+          <End Role="members_type" Type="Self.members_type" Multiplicity="1" />
+          <End Role="members_type1" Type="Self.members_type" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="members_type">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="members_type1">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Wallet_Wallet">
+          <End Role="Wallet" Type="Self.Wallet" Multiplicity="1" />
+          <End Role="Wallet1" Type="Self.Wallet" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Wallet">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Wallet1">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EBCAdminEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="accessories" EntityType="Self.accessory" />
+          <EntitySet Name="Asset_bill_tbl" EntityType="Self.Asset_bill_tbl" />
+          <EntitySet Name="bookings" EntityType="Self.booking" />
+          <EntitySet Name="booking_history" EntityType="Self.booking_history" />
+          <EntitySet Name="courts" EntityType="Self.court" />
+          <EntitySet Name="DBUpdates" EntityType="Self.DBUpdate" />
+          <EntitySet Name="Members" EntityType="Self.Member" />
+          <EntitySet Name="members_type" EntityType="Self.members_type" />
+          <EntitySet Name="NUT_Updates" EntityType="Self.NUT_Updates" />
+          <EntitySet Name="pricelsts" EntityType="Self.pricelst" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="slots" EntityType="Self.slot" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="tblregisters" EntityType="Self.tblregister" />
+          <EntitySet Name="users" EntityType="Self.user" />
+          <EntitySet Name="Wallets" EntityType="Self.Wallet" />
+          <AssociationSet Name="FK_booking_courts" Association="Self.FK_booking_courts">
+            <End Role="courts" EntitySet="courts" />
+            <End Role="booking" EntitySet="bookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_booking_members" Association="Self.FK_booking_members">
+            <End Role="Members" EntitySet="Members" />
+            <End Role="booking" EntitySet="bookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_booking_slots" Association="Self.FK_booking_slots">
+            <End Role="slots" EntitySet="slots" />
+            <End Role="booking" EntitySet="bookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Wallet_Booking" Association="Self.FK_Wallet_Booking">
+            <End Role="booking" EntitySet="bookings" />
+            <End Role="Wallet" EntitySet="Wallets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Members_members_type" Association="Self.FK_Members_members_type">
+            <End Role="members_type" EntitySet="members_type" />
+            <End Role="Members" EntitySet="Members" />
+          </AssociationSet>
+          <AssociationSet Name="FK_members_type_members_type" Association="Self.FK_members_type_members_type">
+            <End Role="members_type" EntitySet="members_type" />
+            <End Role="members_type1" EntitySet="members_type" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Wallet_Wallet" Association="Self.FK_Wallet_Wallet">
+            <End Role="Wallet" EntitySet="Wallets" />
+            <End Role="Wallet1" EntitySet="Wallets" />
+          </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EBCAdminModelStoreContainer" CdmEntityContainer="EBCAdminEntities">
+          <EntitySetMapping Name="accessories">
+            <EntityTypeMapping TypeName="EBCAdminModel.accessory">
+              <MappingFragment StoreEntitySet="accessory">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Tshirt" ColumnName="Tshirt" />
+                <ScalarProperty Name="racket" ColumnName="racket" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Asset_bill_tbl">
+            <EntityTypeMapping TypeName="EBCAdminModel.Asset_bill_tbl">
+              <MappingFragment StoreEntitySet="Asset_bill_tbl">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AssetName" ColumnName="AssetName" />
+                <ScalarProperty Name="AssetImage" ColumnName="AssetImage" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="AssetAmount" ColumnName="AssetAmount" />
+                <ScalarProperty Name="AssetDate" ColumnName="AssetDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bookings">
+            <EntityTypeMapping TypeName="EBCAdminModel.booking">
+              <MappingFragment StoreEntitySet="booking">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="cour_id" ColumnName="cour_id" />
+                <ScalarProperty Name="slot_id" ColumnName="slot_id" />
+                <ScalarProperty Name="booking_date" ColumnName="booking_date" />
+                <ScalarProperty Name="booking_status" ColumnName="booking_status" />
+                <ScalarProperty Name="booking_price" ColumnName="booking_price" />
+                <ScalarProperty Name="Booking_expdate" ColumnName="Booking_expdate" />
+                <ScalarProperty Name="BookingNumber" ColumnName="BookingNumber" />
+                <ScalarProperty Name="Member_id" ColumnName="Member_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="booking_history">
+            <EntityTypeMapping TypeName="EBCAdminModel.booking_history">
+              <MappingFragment StoreEntitySet="booking_history">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="booking_id" ColumnName="booking_id" />
+                <ScalarProperty Name="booking_start_date" ColumnName="booking_start_date" />
+                <ScalarProperty Name="booking_end_date" ColumnName="booking_end_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="courts">
+            <EntityTypeMapping TypeName="EBCAdminModel.court">
+              <MappingFragment StoreEntitySet="courts">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="court_number" ColumnName="court_number" />
+                <ScalarProperty Name="location" ColumnName="location" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DBUpdates">
+            <EntityTypeMapping TypeName="EBCAdminModel.DBUpdate">
+              <MappingFragment StoreEntitySet="DBUpdates">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Details" ColumnName="Details" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Members">
+            <EntityTypeMapping TypeName="EBCAdminModel.Member">
+              <MappingFragment StoreEntitySet="Members">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="member_type" ColumnName="member_type" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="mobile" ColumnName="mobile" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="expiry_date" ColumnName="expiry_date" />
+                <ScalarProperty Name="reg_Date" ColumnName="reg_Date" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="MEstatus" ColumnName="MEstatus" />
+                <ScalarProperty Name="Slot" ColumnName="Slot" />
+                <ScalarProperty Name="Court" ColumnName="Court" />
+                <ScalarProperty Name="MemberNumber" ColumnName="MemberNumber" />
+                <ScalarProperty Name="AcctActivate" ColumnName="AcctActivate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="members_type">
+            <EntityTypeMapping TypeName="EBCAdminModel.members_type">
+              <MappingFragment StoreEntitySet="members_type">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Member_Type_Name" ColumnName="Member_Type_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NUT_Updates">
+            <EntityTypeMapping TypeName="EBCAdminModel.NUT_Updates">
+              <MappingFragment StoreEntitySet="NUT_Updates">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="News" ColumnName="News" />
+                <ScalarProperty Name="Updates" ColumnName="Updates" />
+                <ScalarProperty Name="Tournaments" ColumnName="Tournaments" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pricelsts">
+            <EntityTypeMapping TypeName="EBCAdminModel.pricelst">
+              <MappingFragment StoreEntitySet="pricelst">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="mem3m" ColumnName="mem3m" />
+                <ScalarProperty Name="mem6m" ColumnName="mem6m" />
+                <ScalarProperty Name="singlem" ColumnName="singlem" />
+                <ScalarProperty Name="tax" ColumnName="tax" />
+                <ScalarProperty Name="adultcoaching" ColumnName="adultcoaching" />
+                <ScalarProperty Name="childcoaching" ColumnName="childcoaching" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="EBCAdminModel.Role">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Roles" ColumnName="Roles" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="slots">
+            <EntityTypeMapping TypeName="EBCAdminModel.slot">
+              <MappingFragment StoreEntitySet="slots">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="start_time" ColumnName="start_time" />
+                <ScalarProperty Name="end_time" ColumnName="end_time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="EBCAdminModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblregisters">
+            <EntityTypeMapping TypeName="EBCAdminModel.tblregister">
+              <MappingFragment StoreEntitySet="tblregister">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="EBCAdminModel.user">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="email_id" ColumnName="email_id" />
+                <ScalarProperty Name="phone_no" ColumnName="phone_no" />
+                <ScalarProperty Name="role_id" ColumnName="role_id" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Wallets">
+            <EntityTypeMapping TypeName="EBCAdminModel.Wallet">
+              <MappingFragment StoreEntitySet="Wallet">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="BookedDate" ColumnName="BookedDate" />
+                <ScalarProperty Name="CreditTotal" ColumnName="CreditTotal" />
+                <ScalarProperty Name="CreditUsed" ColumnName="CreditUsed" />
+                <ScalarProperty Name="BookingID" ColumnName="BookingID" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="EBCAdminModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="EBCAdminModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="EBCAdminModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="EBCAdminModel.Store.sp_helpdiagramdefinition" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="EBCAdminModel.Store.sp_helpdiagrams" />
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="EBCAdminModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="EBCAdminModel.Store.sp_upgraddiagrams" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

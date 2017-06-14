@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EBCDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="booking">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="int" Nullable="false" />
+    <Property Name="cour_id" Type="bigint" Nullable="false" />
+    <Property Name="slot_id" Type="bigint" Nullable="false" />
+    <Property Name="booking_date" Type="datetime" Nullable="false" />
+    <Property Name="booking_status" Type="varchar" MaxLength="50" />
+    <Property Name="booking_price" Type="decimal" Precision="10" Scale="6" Nullable="false" />
+    <Property Name="UserType" Type="int" />
+  </EntityType>
+  <EntityType Name="booking_history">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="booking_id" Type="bigint" Nullable="false" />
+    <Property Name="booking_start_date" Type="datetime" Nullable="false" />
+    <Property Name="booking_end_date" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="courts">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="court_number" Type="bigint" Nullable="false" />
+    <Property Name="location" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="Price">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="3M" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="6M" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="1D" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="TaxPercent" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Type" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="slots">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="start_time" Type="time" Precision="7" Nullable="false" />
+    <Property Name="end_time" Type="time" Precision="7" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblregister">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="120" />
+    <Property Name="Email" Type="varchar" MaxLength="120" />
+    <Property Name="Mobile" Type="nvarchar" MaxLength="10" />
+    <Property Name="Address" Type="varchar" MaxLength="250" />
+    <Property Name="Password" Type="varchar" MaxLength="150" />
+    <Property Name="UserType" Type="int" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="first_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="last_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="email_id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="phone_no" Type="bigint" />
+    <Property Name="role_id" Type="bigint" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="status" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="EBCDBModelStoreContainer">
+    <EntitySet Name="booking" EntityType="Self.booking" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="booking_history" EntityType="Self.booking_history" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="courts" EntityType="Self.courts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Price" EntityType="Self.Price" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="slots" EntityType="Self.slots" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblregister" EntityType="Self.tblregister" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

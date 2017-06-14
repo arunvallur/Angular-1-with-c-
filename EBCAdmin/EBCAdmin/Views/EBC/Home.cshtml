@@ -1,0 +1,106 @@
+﻿@{
+  //  ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div ng-app="AngluarApp" ng-controller="Home">
+
+    @*old one---------*@
+
+
+    <div>
+        <div>
+            <nav class="navbar navbar-default navbar-fixed-top" style="background-color:whitesmoke; min-height: 70px">
+                <div style="margin-left: 30px; margin-top: 20px;">
+                    @*<button type="button" style="height: 30px; width: 45px;" data-toggle="collapse" id="menu-toggle" data-target="#menu">*@
+                        <span class="glyphicon glyphicon-align-justify" data-toggle="collapse" id="menu-toggle" data-target="#menu"></span>
+                        @*<span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>*@
+                </div>
+            </nav>
+        </div>
+        
+
+        <div>
+            <div id="wrapper">
+
+                <div ng-if="Usedeatails.Roles==='Admin'">
+
+                    <div id="sidebar-wrapper" style="top:70px">
+                       
+                        <ul class="sidebar-nav">
+                            <li class="sidebar-brand">
+                            </li>
+                            <li>
+                                <a href="#BookingHistory">Booking History</a>
+                            </li>
+                            <li>
+                                <a href="#Member">Member</a>
+                            </li>
+                            <li>
+                                <a href="#CreateOperator">Create Operator</a>
+                            </li>
+                            <li>
+                                <a href="#Price">Price</a>
+                            </li>
+                            <li id="Logut">@Html.ActionLink("Logout", "Login", "EBC", null, new { @class = "arrow" })</li>
+
+                        </ul>
+                    
+                    </div>
+
+                </div>
+
+
+                <div ng-if="Usedeatails.Roles==='Operator'">
+
+                    <div id="sidebar-wrapper" style="top:70px">
+                       
+                        <ul class="sidebar-nav">
+                            <li class="sidebar-brand">
+                            </li>
+                            <li>
+                                <a href="#BookingHistory">Booking History</a>
+                            </li>
+                            <li>
+                                <a href="#Member">Member</a>
+                            </li>
+                            <li>
+                                <a href="#Oneday">One Day User Booking</a>
+                            </li>
+                            <li>
+                                <a href="#Price">Price</a>
+                            </li>
+                          
+                            <li id="Logut">@Html.ActionLink("Logout", "Login", "EBC", null, new { @class = "arrow" })</li>
+                         
+
+                        </ul>
+                       
+
+
+
+
+                    </div>
+
+                </div>
+
+
+                <div>
+                    <div ng-view=""></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+   

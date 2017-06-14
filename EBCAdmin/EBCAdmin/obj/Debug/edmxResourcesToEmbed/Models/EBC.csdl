@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EBCDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="booking_history">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="booking_id" Type="Int64" Nullable="false" />
+    <Property Name="booking_start_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="booking_end_date" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="court">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="court_number" Type="Int64" Nullable="false" />
+    <Property Name="location" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="slot">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="start_time" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="end_time" Type="Time" Nullable="false" Precision="7" />
+  </EntityType>
+  <EntityType Name="tblregister">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+    <Property Name="Mobile" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="UserType" Type="Int32" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="first_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="phone_no" Type="Int64" />
+    <Property Name="role_id" Type="Int64" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="status" Type="Int16" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="EBCDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="booking_history" EntityType="Self.booking_history" />
+    <EntitySet Name="courts" EntityType="Self.court" />
+    <EntitySet Name="slots" EntityType="Self.slot" />
+    <EntitySet Name="tblregisters" EntityType="Self.tblregister" />
+    <EntitySet Name="users" EntityType="Self.user" />
+    <EntitySet Name="bookings" EntityType="EBCDBModel.booking" />
+    <EntitySet Name="Prices" EntityType="EBCDBModel.Price" />
+  </EntityContainer>
+  <EntityType Name="booking">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="user_id" Type="Int32" Nullable="false" />
+    <Property Name="cour_id" Type="Int64" Nullable="false" />
+    <Property Name="slot_id" Type="Int64" Nullable="false" />
+    <Property Name="booking_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="booking_status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="booking_price" Type="Decimal" Nullable="false" Precision="10" Scale="6" />
+    <Property Name="UserType" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Price">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="C3M" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="C6M" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="C1D" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="TaxPercent" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="Type" Type="Int32" Nullable="false" />
+  </EntityType>
+</Schema>

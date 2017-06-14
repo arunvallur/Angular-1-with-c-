@@ -1,0 +1,40 @@
+﻿<div ng-app="AngluarApp" ng-controller="onedaymembers">
+    <div class="container-fluid page-header" style="padding-top:70px">
+        <!--<div class="row">
+            <div class="form-group required">
+                <label class="col-sm-2 control-label">Member Type </label>
+                <div class="col-sm-5">
+                    <select class="form-control" ng-change="GetMembertype(options.id)" name="types" data-ng-model="options.id" data-ng-options="type.name for type in options">
+                        <option value="">Select types</option>
+                    </select>
+                </div>
+            </div>
+
+        </div>-->
+
+        <div class="container-fluid">
+            <form class="form-horizontal" role="form" name="frmCustomer" novalidate>
+
+                <div class="container-fluid boxed">
+                    <div class="table-responsive row">
+                        <table data-ng-table="tableParams" class="table table-striped" show-filter="true">
+                            <tr ng-repeat="Booking in $data">
+                                <td data-title="'Booking Id'" sortable="'id'" filter="{ 'id': 'text' }">{{Booking.id}}</td>
+                                <td data-title="'User Name'" sortable="'username'" filter="{ 'username': 'text' }">{{Booking.username}}</td>
+                                <td data-title="'Court Number'" sortable="'Court Number'" filter="{ 'cour_id': 'text' }">{{Booking.cour_id}}</td>
+                                <td data-title="'Slot'" sortable="'Slot ID'" filter="{ 'slot_id': 'text' }">{{Booking.slot_id}}</td>
+                                <td data-title="'Booking Status'" sortable="'Booking Status'" filter="{ 'booking_status': 'text' }">{{Booking.booking_status}}</td>
+                                <td data-title="'Booking Date'" sortable="'Booking Date'" filter="{ 'booking_date': 'text' }">{{Booking.booking_date|dateFilter | date:"dd-MM-yyyy" }}</td>
+                                <td><button class="btn btn-default" ng-disabled="form_org.$invalid" data-ng-click="Cancel()">Cancel Booking</button></td>
+                               
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Page header end -->
+
+
+</div>

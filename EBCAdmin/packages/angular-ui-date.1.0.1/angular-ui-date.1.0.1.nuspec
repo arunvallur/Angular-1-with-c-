@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>angular-ui-date</id>
+    <version>1.0.1</version>
+    <title>Angular UI ui-date</title>
+    <authors>angular-ui</authors>
+    <owners>angular-ui</owners>
+    <projectUrl>https://github.com/angular-ui/ui-date/tree/1.0.1</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>This directive allows you to add a jQueryUI DatePicker to your form elements</description>
+    <summary>jQuery UI Datepicker for AngularJS</summary>
+    <language>en-US</language>
+    <tags>angular ui date jquery datepicker</tags>
+  </metadata>
+</package>

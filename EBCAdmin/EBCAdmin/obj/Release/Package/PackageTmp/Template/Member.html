@@ -1,0 +1,51 @@
+﻿<div ng-app="AngluarApp" ng-controller="members">
+    <div class="container-fluid page-header" style="padding-top:70px">
+        <div class="row">
+            <div class="form-group required">
+                <label class="col-sm-2 control-label">Member Type </label>
+                <div class="col-sm-5">
+                    <select class="form-control" ng-change="GetMembertype(options.id)" name="types" data-ng-model="options.id" data-ng-options="type.name for type in options">
+                        <option value="">Select types</option>
+                    </select>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="container-fluid">
+            <form class="form-horizontal" role="form" name="frmCustomer" novalidate>
+
+                <div class="container-fluid boxed">
+                    <div class="table-responsive row">
+                        <table data-ng-table="tableParams" class="table table-striped" show-filter="true">
+                            <tr ng-repeat="members in $data">
+                                <td data-title="'ID'" sortable="'id'" filter="{ 'id': 'text' }">{{members.id}}</td>
+                                <td data-title="'Name'" sortable="'name'" filter="{ 'Name': 'text' }">{{members.Name}}</td>
+                                <td data-title="'Email'" sortable="'Email'" filter="{ 'Email': 'text' }">{{members.Email}}</td>
+                                <td data-title="'Mobile'" sortable="'mobile'" filter="{ 'mobile': 'text' }">{{members.mobile}}</td>
+
+                                <td data-title="'Address'" sortable="'Address'" filter="{ 'Address': 'text' }">{{members.Address}}</td>
+
+                                <td>
+                                    <button class="btn btn-default" ng-disabled="form_org.$invalid" data-ng-click="Details(members)">Details</button>
+                                </td>
+                                <!--<td data-title="'Booking Date'" sortable="'Booking Date'" filter="{ 'booking_date': 'text' }"></td>-->
+                                <!--<td data-title="'Active'">
+                                    <input type="checkbox" disabled="disabled" ng-model="Customer.isactive" />
+                                </td>-->
+                                <!--<td>
+                                    <button class="btn btn-default" ng-disabled="form_org.$invalid" data-ng-click="EditCustomer(Customer)">Edit</button>
+                                </td>-->
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Page header end -->
+
+
+
+</div>
+

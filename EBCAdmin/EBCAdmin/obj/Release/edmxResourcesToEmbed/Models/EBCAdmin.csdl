@@ -1,0 +1,307 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EBCAdminModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="accessory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Tshirt" Type="Boolean" />
+    <Property Name="racket" Type="Boolean" />
+    <Property Name="UserId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Asset_bill_tbl">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AssetName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="AssetImage" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+    <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="AssetAmount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="AssetDate" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="booking">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="user_id" Type="Int64" Nullable="false" />
+    <Property Name="cour_id" Type="Int64" Nullable="false" />
+    <Property Name="slot_id" Type="Int64" Nullable="false" />
+    <Property Name="booking_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="booking_status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="booking_price" Type="Decimal" Precision="10" Scale="6" Nullable="false" />
+    <Property Name="Booking_expdate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="BookingNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Member_id" Type="Int32" />
+    <NavigationProperty Name="court" Relationship="Self.FK_booking_courts" FromRole="booking" ToRole="courts" />
+    <NavigationProperty Name="Member" Relationship="Self.FK_booking_members" FromRole="booking" ToRole="Members" />
+    <NavigationProperty Name="slot" Relationship="Self.FK_booking_slots" FromRole="booking" ToRole="slots" />
+    <NavigationProperty Name="Wallets" Relationship="Self.FK_Wallet_Booking" FromRole="booking" ToRole="Wallet" />
+  </EntityType>
+  <EntityType Name="booking_history">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="booking_id" Type="Int64" Nullable="false" />
+    <Property Name="booking_start_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="booking_end_date" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="court">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="court_number" Type="Int64" Nullable="false" />
+    <Property Name="location" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="bookings" Relationship="Self.FK_booking_courts" FromRole="courts" ToRole="booking" />
+  </EntityType>
+  <EntityType Name="Member">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="member_type" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="mobile" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="expiry_date" Type="DateTime" Precision="0" />
+    <Property Name="reg_Date" Type="DateTime" Precision="0" />
+    <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="MEstatus" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="Slot" Type="Int32" />
+    <Property Name="Court" Type="Int32" />
+    <Property Name="MemberNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="AcctActivate" Type="Int32" />
+    <NavigationProperty Name="bookings" Relationship="Self.FK_booking_members" FromRole="Members" ToRole="booking" />
+    <NavigationProperty Name="members_type" Relationship="Self.FK_Members_members_type" FromRole="Members" ToRole="members_type" />
+  </EntityType>
+  <EntityType Name="members_type">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Member_Type_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Members" Relationship="Self.FK_Members_members_type" FromRole="members_type" ToRole="Members" />
+    <NavigationProperty Name="members_type1" Relationship="Self.FK_members_type_members_type" FromRole="members_type" ToRole="members_type1" />
+    <NavigationProperty Name="members_type2" Relationship="Self.FK_members_type_members_type" FromRole="members_type1" ToRole="members_type" />
+  </EntityType>
+  <EntityType Name="NUT_Updates">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="News" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Updates" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Tournaments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="pricelst">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="mem3m" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="mem6m" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="singlem" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="tax" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="adultcoaching" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="childcoaching" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Roles" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="slot">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="start_time" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="end_time" Type="Time" Nullable="false" Precision="7" />
+    <NavigationProperty Name="bookings" Relationship="Self.FK_booking_slots" FromRole="slots" ToRole="booking" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="tblregister">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+    <Property Name="Mobile" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="UserType" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="first_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="phone_no" Type="Int64" />
+    <Property Name="role_id" Type="Int64" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="status" Type="Int16" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Wallet">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BookedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreditTotal" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="CreditUsed" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="BookingID" Type="Int64" Nullable="false" />
+    <Property Name="MemberID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="booking" Relationship="Self.FK_Wallet_Booking" FromRole="Wallet" ToRole="booking" />
+    <NavigationProperty Name="Wallet1" Relationship="Self.FK_Wallet_Wallet" FromRole="Wallet" ToRole="Wallet1" />
+    <NavigationProperty Name="Wallet2" Relationship="Self.FK_Wallet_Wallet" FromRole="Wallet1" ToRole="Wallet" />
+  </EntityType>
+  <Association Name="FK_booking_courts">
+    <End Role="courts" Type="Self.court" Multiplicity="1" />
+    <End Role="booking" Type="Self.booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="courts">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="booking">
+        <PropertyRef Name="cour_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_booking_members">
+    <End Role="Members" Type="Self.Member" Multiplicity="1" />
+    <End Role="booking" Type="Self.booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Members">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="booking">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_booking_slots">
+    <End Role="slots" Type="Self.slot" Multiplicity="1" />
+    <End Role="booking" Type="Self.booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="slots">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="booking">
+        <PropertyRef Name="slot_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Wallet_Booking">
+    <End Role="booking" Type="Self.booking" Multiplicity="1" />
+    <End Role="Wallet" Type="Self.Wallet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="booking">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Wallet">
+        <PropertyRef Name="BookingID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Members_members_type">
+    <End Role="members_type" Type="Self.members_type" Multiplicity="1" />
+    <End Role="Members" Type="Self.Member" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="members_type">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Members">
+        <PropertyRef Name="member_type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_members_type_members_type">
+    <End Role="members_type" Type="Self.members_type" Multiplicity="1" />
+    <End Role="members_type1" Type="Self.members_type" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="members_type">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="members_type1">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Wallet_Wallet">
+    <End Role="Wallet" Type="Self.Wallet" Multiplicity="1" />
+    <End Role="Wallet1" Type="Self.Wallet" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Wallet">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Wallet1">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EBCAdminEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="accessories" EntityType="Self.accessory" />
+    <EntitySet Name="Asset_bill_tbl" EntityType="Self.Asset_bill_tbl" />
+    <EntitySet Name="bookings" EntityType="Self.booking" />
+    <EntitySet Name="booking_history" EntityType="Self.booking_history" />
+    <EntitySet Name="courts" EntityType="Self.court" />
+    <EntitySet Name="Members" EntityType="Self.Member" />
+    <EntitySet Name="members_type" EntityType="Self.members_type" />
+    <EntitySet Name="NUT_Updates" EntityType="Self.NUT_Updates" />
+    <EntitySet Name="pricelsts" EntityType="Self.pricelst" />
+    <EntitySet Name="Roles" EntityType="Self.Role" />
+    <EntitySet Name="slots" EntityType="Self.slot" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="tblregisters" EntityType="Self.tblregister" />
+    <EntitySet Name="users" EntityType="Self.user" />
+    <EntitySet Name="Wallets" EntityType="Self.Wallet" />
+    <AssociationSet Name="FK_booking_courts" Association="Self.FK_booking_courts">
+      <End Role="courts" EntitySet="courts" />
+      <End Role="booking" EntitySet="bookings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_booking_members" Association="Self.FK_booking_members">
+      <End Role="Members" EntitySet="Members" />
+      <End Role="booking" EntitySet="bookings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_booking_slots" Association="Self.FK_booking_slots">
+      <End Role="slots" EntitySet="slots" />
+      <End Role="booking" EntitySet="bookings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Wallet_Booking" Association="Self.FK_Wallet_Booking">
+      <End Role="booking" EntitySet="bookings" />
+      <End Role="Wallet" EntitySet="Wallets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Members_members_type" Association="Self.FK_Members_members_type">
+      <End Role="members_type" EntitySet="members_type" />
+      <End Role="Members" EntitySet="Members" />
+    </AssociationSet>
+    <AssociationSet Name="FK_members_type_members_type" Association="Self.FK_members_type_members_type">
+      <End Role="members_type" EntitySet="members_type" />
+      <End Role="members_type1" EntitySet="members_type" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Wallet_Wallet" Association="Self.FK_Wallet_Wallet">
+      <End Role="Wallet" EntitySet="Wallets" />
+      <End Role="Wallet1" EntitySet="Wallets" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

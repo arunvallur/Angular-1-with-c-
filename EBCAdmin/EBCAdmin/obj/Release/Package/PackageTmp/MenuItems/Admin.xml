@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<menu>
+  <menuitem>
+    <link>admin</link>
+    <name>admintab</name>
+  </menuitem>
+  
+</menu>

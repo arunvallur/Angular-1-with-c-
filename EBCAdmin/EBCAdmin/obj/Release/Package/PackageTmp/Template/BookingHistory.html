@@ -1,0 +1,57 @@
+﻿<div ng-app="AngluarApp" ng-controller="History">
+    <div class="container-fluid page-header" style="padding-top:70px">
+        <div class="row">
+
+            <!--<div class="col-md-12 ">
+                <h1>{{Title}} <small>{{SubTitle}}</small></h1>
+                <span class="pull-right"><a href="" ng-click="Help()">Help </a></span>
+            </div>-->
+            <!--<div class="form-group">
+                <label class="col-sm-2 control-label">User Type</label>
+                <div class="col-sm-3">
+                    <select data-ng-options="o.name for o in options" data-ng-model="selectedOption"></select>
+
+                </div>
+            </div>-->
+            <div class="form-group required">
+                <label class="col-sm-2 control-label">Booked Type </label>
+                <div class="col-sm-5">
+                    <select class="form-control" ng-change="Getusertype(options.id)" name="types" data-ng-model="options.id" data-ng-options="type.name for type in options">
+                        <option value="">Select types</option>
+                    </select>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Page header end -->
+    <div class="container-fluid">
+        <form class="form-horizontal" role="form" name="frmCustomer" novalidate>
+            
+            <div class="container-fluid boxed">
+                <div class="table-responsive row">
+                    <table data-ng-table="tableParams" class="table table-striped" show-filter="true">
+                        <tr ng-repeat="Booking in $data">
+                            <td data-title="'Booking Id'" sortable="'id'" filter="{ 'id': 'text' }">{{Booking.id}}</td>
+                            <td data-title="'User Name'" sortable="'username'" filter="{ 'username': 'text' }">{{Booking.username}}</td>
+                            <td data-title="'Court Number'" sortable="'Court Number'" filter="{ 'cour_id': 'text' }">{{Booking.cour_id}}</td>
+                            <td data-title="'Time'" sortable="'Slot ID'" filter="{ 'starttime': 'text' }">{{Booking.starttime}}</td>
+                            <td data-title="'Booking Status'" sortable="'Booking Status'" filter="{ 'booking_status': 'text' }">{{Booking.booking_status}}</td>
+                            <td data-title="'Booking Date'" sortable="'Booking Date'" filter="{ 'booking_date': 'text' }">{{Booking.booking_date|dateFilter | date:"dd-MM-yyyy" }}</td>
+                            <td><button class="btn btn-default" ng-disabled="Booking.booking_status!='Booked'" data-ng-click="Cancel(Booking)">Cancel Booking</button></td>
+
+                            <!--<td data-title="'Active'">
+                        <input type="checkbox" disabled="disabled" ng-model="Customer.isactive" />
+                    </td>-->
+                            <!--<td>
+                        <button class="btn btn-default" ng-disabled="form_org.$invalid" data-ng-click="EditCustomer(Customer)">Edit</button>
+                    </td>-->
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </form>
+    </div>
+    
+</div>

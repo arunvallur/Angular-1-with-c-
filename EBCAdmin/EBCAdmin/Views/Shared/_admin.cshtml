@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery-datepicker-ui.js"></script>
+    <link href="~/Content/jquery-ui.css" rel="stylesheet" />
+
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/bootstrap-3.1.1-dist/js/bootstrap.min.js"></script>
+    <link href="~/bootstrap-3.1.1-dist/css/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <link href="~/Content/menu.css" rel="stylesheet" />
+    <link href="~/Content/css/bootstrap-theme.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="~/Content/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Content/css/main.css">
+    <script src="~/Scripts/angular-animate.js"></script>
+    <script src="~/Scripts/EduSource/loading-bar.js"></script>
+    <link href="~/Content/loading-bar.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/bower_components/underscore/underscore.js"></script>
+    <script src="~/Scripts/angular-route.js"></script>
+    <script src="~/Scripts/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <link href="~/Content/ng-table.css" rel="stylesheet" />
+    <script src="~/Scripts/ng-table.js"></script>
+    <script src="~/Scripts/angular-sanitize.js"></script>
+    <script src="~/Scripts/prefixfree.min.js"></script>
+    <script src="~/Content/ngDialog-master/js/ngDialog.js"></script>
+    <link href="~/Content/ngDialog-master/css/ngDialog.css" rel="stylesheet" />
+    <link href="~/Content/ngDialog-master/css/ngDialog-theme-default.min.css" rel="stylesheet" />
+    <link href="~/Content/adminstyle.css" rel="stylesheet" />
+</head>
+<body>
+    <form id="login_form">
+        @Html.ActionLink("Admin Login", "AdminLogin", "User")<br />
+
+        @Html.ActionLink("Login Existing User", "UserLogin", "Home")
+    </form>
+    <div>
+        @RenderBody()
+        <footer>
+            
+        </footer>
+    </div>
+</body>
+</html>
+

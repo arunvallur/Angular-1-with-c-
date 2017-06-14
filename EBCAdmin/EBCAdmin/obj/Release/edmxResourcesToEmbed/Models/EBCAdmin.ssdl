@@ -1,0 +1,293 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EBCAdminModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="accessory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Tshirt" Type="bit" />
+    <Property Name="racket" Type="bit" />
+    <Property Name="UserId" Type="int" />
+  </EntityType>
+  <EntityType Name="Asset_bill_tbl">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AssetName" Type="varchar" MaxLength="100" />
+    <Property Name="AssetImage" Type="varchar" MaxLength="120" />
+    <Property Name="Remarks" Type="varchar" MaxLength="500" />
+    <Property Name="AssetAmount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="AssetDate" Type="date" />
+  </EntityType>
+  <EntityType Name="booking">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="bigint" Nullable="false" />
+    <Property Name="cour_id" Type="bigint" Nullable="false" />
+    <Property Name="slot_id" Type="bigint" Nullable="false" />
+    <Property Name="booking_date" Type="datetime" Nullable="false" />
+    <Property Name="booking_status" Type="varchar" MaxLength="50" />
+    <Property Name="booking_price" Type="decimal" Precision="10" Scale="6" Nullable="false" />
+    <Property Name="Booking_expdate" Type="datetime" Nullable="false" />
+    <Property Name="BookingNumber" Type="varchar" MaxLength="10" />
+    <Property Name="Member_id" Type="int" />
+  </EntityType>
+  <EntityType Name="booking_history">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="booking_id" Type="bigint" Nullable="false" />
+    <Property Name="booking_start_date" Type="datetime" Nullable="false" />
+    <Property Name="booking_end_date" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="courts">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="court_number" Type="bigint" Nullable="false" />
+    <Property Name="location" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="Members">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="member_type" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="120" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="100" />
+    <Property Name="mobile" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="expiry_date" Type="date" />
+    <Property Name="reg_Date" Type="date" />
+    <Property Name="Address" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="MEstatus" Type="varchar" MaxLength="12" />
+    <Property Name="Slot" Type="int" />
+    <Property Name="Court" Type="int" />
+    <Property Name="MemberNumber" Type="varchar" MaxLength="10" />
+    <Property Name="AcctActivate" Type="int" />
+  </EntityType>
+  <EntityType Name="members_type">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Member_Type_Name" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="NUT_Updates">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="News" Type="varchar(max)" />
+    <Property Name="Updates" Type="varchar(max)" />
+    <Property Name="Tournaments" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="pricelst">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="mem3m" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="mem6m" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="singlem" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="tax" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="adultcoaching" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="childcoaching" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Roles" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="slots">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="start_time" Type="time" Precision="7" Nullable="false" />
+    <Property Name="end_time" Type="time" Precision="7" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="tblregister">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="120" />
+    <Property Name="Email" Type="varchar" MaxLength="120" />
+    <Property Name="Mobile" Type="nvarchar" MaxLength="10" />
+    <Property Name="Address" Type="varchar" MaxLength="250" />
+    <Property Name="Password" Type="varchar" MaxLength="150" />
+    <Property Name="UserType" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="first_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="last_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="email_id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="phone_no" Type="bigint" />
+    <Property Name="role_id" Type="bigint" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="status" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Wallet">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BookedDate" Type="datetime" />
+    <Property Name="CreditTotal" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="CreditUsed" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="BookingID" Type="bigint" Nullable="false" />
+    <Property Name="MemberID" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_booking_courts">
+    <End Role="courts" Type="Self.courts" Multiplicity="1" />
+    <End Role="booking" Type="Self.booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="courts">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="booking">
+        <PropertyRef Name="cour_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_booking_members">
+    <End Role="Members" Type="Self.Members" Multiplicity="1" />
+    <End Role="booking" Type="Self.booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Members">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="booking">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_booking_slots">
+    <End Role="slots" Type="Self.slots" Multiplicity="1" />
+    <End Role="booking" Type="Self.booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="slots">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="booking">
+        <PropertyRef Name="slot_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Members_members_type">
+    <End Role="members_type" Type="Self.members_type" Multiplicity="1" />
+    <End Role="Members" Type="Self.Members" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="members_type">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Members">
+        <PropertyRef Name="member_type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_members_type_members_type">
+    <End Role="members_type" Type="Self.members_type" Multiplicity="1" />
+    <End Role="members_type1" Type="Self.members_type" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="members_type">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="members_type1">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Wallet_Booking">
+    <End Role="booking" Type="Self.booking" Multiplicity="1" />
+    <End Role="Wallet" Type="Self.Wallet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="booking">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Wallet">
+        <PropertyRef Name="BookingID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Wallet_Wallet">
+    <End Role="Wallet" Type="Self.Wallet" Multiplicity="1" />
+    <End Role="Wallet1" Type="Self.Wallet" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Wallet">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Wallet1">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EBCAdminModelStoreContainer">
+    <EntitySet Name="accessory" EntityType="Self.accessory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Asset_bill_tbl" EntityType="Self.Asset_bill_tbl" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="booking" EntityType="Self.booking" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="booking_history" EntityType="Self.booking_history" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="courts" EntityType="Self.courts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Members" EntityType="Self.Members" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="members_type" EntityType="Self.members_type" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NUT_Updates" EntityType="Self.NUT_Updates" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="pricelst" EntityType="Self.pricelst" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="slots" EntityType="Self.slots" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblregister" EntityType="Self.tblregister" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Wallet" EntityType="Self.Wallet" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_booking_courts" Association="Self.FK_booking_courts">
+      <End Role="courts" EntitySet="courts" />
+      <End Role="booking" EntitySet="booking" />
+    </AssociationSet>
+    <AssociationSet Name="FK_booking_members" Association="Self.FK_booking_members">
+      <End Role="Members" EntitySet="Members" />
+      <End Role="booking" EntitySet="booking" />
+    </AssociationSet>
+    <AssociationSet Name="FK_booking_slots" Association="Self.FK_booking_slots">
+      <End Role="slots" EntitySet="slots" />
+      <End Role="booking" EntitySet="booking" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Members_members_type" Association="Self.FK_Members_members_type">
+      <End Role="members_type" EntitySet="members_type" />
+      <End Role="Members" EntitySet="Members" />
+    </AssociationSet>
+    <AssociationSet Name="FK_members_type_members_type" Association="Self.FK_members_type_members_type">
+      <End Role="members_type" EntitySet="members_type" />
+      <End Role="members_type1" EntitySet="members_type" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Wallet_Booking" Association="Self.FK_Wallet_Booking">
+      <End Role="booking" EntitySet="booking" />
+      <End Role="Wallet" EntitySet="Wallet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Wallet_Wallet" Association="Self.FK_Wallet_Wallet">
+      <End Role="Wallet" EntitySet="Wallet" />
+      <End Role="Wallet1" EntitySet="Wallet" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EBCAdminModelStoreContainer" CdmEntityContainer="EBCAdminEntities">
+    <EntitySetMapping Name="accessories">
+      <EntityTypeMapping TypeName="EBCAdminModel.accessory">
+        <MappingFragment StoreEntitySet="accessory">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Tshirt" ColumnName="Tshirt" />
+          <ScalarProperty Name="racket" ColumnName="racket" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Asset_bill_tbl">
+      <EntityTypeMapping TypeName="EBCAdminModel.Asset_bill_tbl">
+        <MappingFragment StoreEntitySet="Asset_bill_tbl">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="AssetName" ColumnName="AssetName" />
+          <ScalarProperty Name="AssetImage" ColumnName="AssetImage" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="AssetAmount" ColumnName="AssetAmount" />
+          <ScalarProperty Name="AssetDate" ColumnName="AssetDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bookings">
+      <EntityTypeMapping TypeName="EBCAdminModel.booking">
+        <MappingFragment StoreEntitySet="booking">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="cour_id" ColumnName="cour_id" />
+          <ScalarProperty Name="slot_id" ColumnName="slot_id" />
+          <ScalarProperty Name="booking_date" ColumnName="booking_date" />
+          <ScalarProperty Name="booking_status" ColumnName="booking_status" />
+          <ScalarProperty Name="booking_price" ColumnName="booking_price" />
+          <ScalarProperty Name="Booking_expdate" ColumnName="Booking_expdate" />
+          <ScalarProperty Name="BookingNumber" ColumnName="BookingNumber" />
+          <ScalarProperty Name="Member_id" ColumnName="Member_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="booking_history">
+      <EntityTypeMapping TypeName="EBCAdminModel.booking_history">
+        <MappingFragment StoreEntitySet="booking_history">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="booking_id" ColumnName="booking_id" />
+          <ScalarProperty Name="booking_start_date" ColumnName="booking_start_date" />
+          <ScalarProperty Name="booking_end_date" ColumnName="booking_end_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="courts">
+      <EntityTypeMapping TypeName="EBCAdminModel.court">
+        <MappingFragment StoreEntitySet="courts">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="court_number" ColumnName="court_number" />
+          <ScalarProperty Name="location" ColumnName="location" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Members">
+      <EntityTypeMapping TypeName="EBCAdminModel.Member">
+        <MappingFragment StoreEntitySet="Members">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="member_type" ColumnName="member_type" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="mobile" ColumnName="mobile" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="expiry_date" ColumnName="expiry_date" />
+          <ScalarProperty Name="reg_Date" ColumnName="reg_Date" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="MEstatus" ColumnName="MEstatus" />
+          <ScalarProperty Name="Slot" ColumnName="Slot" />
+          <ScalarProperty Name="Court" ColumnName="Court" />
+          <ScalarProperty Name="MemberNumber" ColumnName="MemberNumber" />
+          <ScalarProperty Name="AcctActivate" ColumnName="AcctActivate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="members_type">
+      <EntityTypeMapping TypeName="EBCAdminModel.members_type">
+        <MappingFragment StoreEntitySet="members_type">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Member_Type_Name" ColumnName="Member_Type_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NUT_Updates">
+      <EntityTypeMapping TypeName="EBCAdminModel.NUT_Updates">
+        <MappingFragment StoreEntitySet="NUT_Updates">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="News" ColumnName="News" />
+          <ScalarProperty Name="Updates" ColumnName="Updates" />
+          <ScalarProperty Name="Tournaments" ColumnName="Tournaments" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pricelsts">
+      <EntityTypeMapping TypeName="EBCAdminModel.pricelst">
+        <MappingFragment StoreEntitySet="pricelst">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="mem3m" ColumnName="mem3m" />
+          <ScalarProperty Name="mem6m" ColumnName="mem6m" />
+          <ScalarProperty Name="singlem" ColumnName="singlem" />
+          <ScalarProperty Name="tax" ColumnName="tax" />
+          <ScalarProperty Name="adultcoaching" ColumnName="adultcoaching" />
+          <ScalarProperty Name="childcoaching" ColumnName="childcoaching" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="EBCAdminModel.Role">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Roles" ColumnName="Roles" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="slots">
+      <EntityTypeMapping TypeName="EBCAdminModel.slot">
+        <MappingFragment StoreEntitySet="slots">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="start_time" ColumnName="start_time" />
+          <ScalarProperty Name="end_time" ColumnName="end_time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="EBCAdminModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblregisters">
+      <EntityTypeMapping TypeName="EBCAdminModel.tblregister">
+        <MappingFragment StoreEntitySet="tblregister">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="EBCAdminModel.user">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+          <ScalarProperty Name="email_id" ColumnName="email_id" />
+          <ScalarProperty Name="phone_no" ColumnName="phone_no" />
+          <ScalarProperty Name="role_id" ColumnName="role_id" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Wallets">
+      <EntityTypeMapping TypeName="EBCAdminModel.Wallet">
+        <MappingFragment StoreEntitySet="Wallet">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="BookedDate" ColumnName="BookedDate" />
+          <ScalarProperty Name="CreditTotal" ColumnName="CreditTotal" />
+          <ScalarProperty Name="CreditUsed" ColumnName="CreditUsed" />
+          <ScalarProperty Name="BookingID" ColumnName="BookingID" />
+          <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

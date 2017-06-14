@@ -1,0 +1,23 @@
+﻿<script src="../Scripts/angular.js"></script>
+<script src="../AppScript/adminscript.js"></script>
+<div ng-app="AngluarApp">
+    <div class="modal-header">
+        <h3 class="modal-title">Confirm Cancel</h3>
+    </div>
+    <div class="modal-body">
+        <ul>
+            <li>
+                Name Of Player:<b>{{Details.username}}</b> <br/>
+                date of Booking:<b>{{Details.booking_date|dateFilter | date:"dd-MM-yyyy"}}</b>
+            </li>
+        </ul>
+        
+       
+
+      
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    </div>
+</div>
